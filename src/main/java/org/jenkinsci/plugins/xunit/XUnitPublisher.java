@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.Arrays;
 
+import org.jenkinsci.Symbol;
 import org.jenkinsci.lib.dryrun.DryRun;
 import org.jenkinsci.lib.dtkit.descriptor.TestTypeDescriptor;
 import org.jenkinsci.lib.dtkit.type.TestType;
@@ -155,6 +156,7 @@ public class XUnitPublisher extends Recorder implements DryRun, Serializable, Si
         return BuildStepMonitor.NONE;
     }
 
+    @Symbol("publishXUnit")
     @Extension
     public static final class XUnitDescriptorPublisher extends BuildStepDescriptor<Publisher> {
 

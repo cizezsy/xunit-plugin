@@ -23,13 +23,14 @@ THE SOFTWARE.
 */
 package org.jenkinsci.plugins.xunit;
 
-import hudson.FilePath;
-import hudson.model.Result;
 import org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition;
 import org.jenkinsci.plugins.workflow.job.WorkflowJob;
 import org.junit.ClassRule;
 import org.junit.Test;
 import org.jvnet.hudson.test.JenkinsRule;
+
+import hudson.FilePath;
+import hudson.model.Result;
 
 public class XUnitWorkflowTest {
 
@@ -51,7 +52,7 @@ public class XUnitWorkflowTest {
         job.setDefinition(new CpsFlowDefinition(""
                 + "node {\n"
                 + "  step([$class: 'XUnitBuilder', testTimeMargin: '3000', thresholdMode: 1, thresholds: [[$class: 'FailedThreshold', failureNewThreshold: '', failureThreshold: '', unstableNewThreshold: '', unstableThreshold: '1'], [$class: 'SkippedThreshold', failureNewThreshold: '', failureThreshold: '', unstableNewThreshold: '', unstableThreshold: '']], tools: [[$class: 'GoogleTestType', deleteOutputFiles: false, failIfNotNew: false, pattern: 'input.xml', skipNoTestFiles: false, stopProcessingIfError: true]]])\n"
-                + "}"));
+                + "}", true));
 
         jenkinsRule.assertBuildStatus(Result.UNSTABLE, job.scheduleBuild2(0).get());
     }
@@ -62,7 +63,7 @@ public class XUnitWorkflowTest {
         job.setDefinition(new CpsFlowDefinition(""
                 + "node {\n"
                 + "  step([$class: 'XUnitPublisher', testTimeMargin: '3000', thresholdMode: 1, thresholds: [[$class: 'FailedThreshold', failureNewThreshold: '', failureThreshold: '', unstableNewThreshold: '', unstableThreshold: '1'], [$class: 'SkippedThreshold', failureNewThreshold: '', failureThreshold: '', unstableNewThreshold: '', unstableThreshold: '']], tools: [[$class: 'GoogleTestType', deleteOutputFiles: false, failIfNotNew: false, pattern: 'input.xml', skipNoTestFiles: false, stopProcessingIfError: true]]])\n"
-                + "}"));
+                + "}", true));
 
         jenkinsRule.assertBuildStatus(Result.UNSTABLE, job.scheduleBuild2(0).get());
     }
