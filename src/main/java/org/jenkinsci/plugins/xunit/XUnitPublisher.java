@@ -38,6 +38,8 @@ import org.jenkinsci.plugins.xunit.threshold.XUnitThreshold;
 import org.jenkinsci.plugins.xunit.threshold.XUnitThresholdDescriptor;
 import org.kohsuke.stapler.DataBoundConstructor;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 import hudson.DescriptorExtensionList;
 import hudson.Extension;
 import hudson.FilePath;
@@ -64,25 +66,18 @@ import jenkins.tasks.SimpleBuildStep;
  */
 public class XUnitPublisher extends Recorder implements DryRun, Serializable, SimpleBuildStep {
 
-    private TestType[] types;
+    @XStreamAlias("types")
+    private TestType[] tools;
     private XUnitThreshold[] thresholds;
     private int thresholdMode;
     private ExtraConfiguration extraConfiguration;
 
-    public XUnitPublisher(TestType[] types, XUnitThreshold[] thresholds) {
-        this.types = Arrays.copyOf(types, types.length);
-        this.thresholds = Arrays.copyOf(thresholds, thresholds.length);;
-        this.thresholdMode = 1;
-    }
-
     @DataBoundConstructor
     public XUnitPublisher(TestType[] tools, XUnitThreshold[] thresholds, int thresholdMode, String testTimeMargin) {
-        this(tools, thresholds);
+        this.tools = (tools != null ? Arrays.copyOf(tools, tools.length) : new TestType[0]);
+        this.thresholds = Arrays.copyOf(thresholds, thresholds.length);
         this.thresholdMode = thresholdMode;
-        long longTestTimeMargin = XUnitDefaultValues.TEST_REPORT_TIME_MARGING;
-        if (testTimeMargin != null && testTimeMargin.trim().length() != 0) {
-            longTestTimeMargin = Long.parseLong(testTimeMargin);
-        }
+        long longTestTimeMargin = XUnitUtil.parsePositiveLong(testTimeMargin, XUnitDefaultValues.TEST_REPORT_TIME_MARGING);
         this.extraConfiguration = new ExtraConfiguration(longTestTimeMargin);
     }
 
@@ -90,7 +85,7 @@ public class XUnitPublisher extends Recorder implements DryRun, Serializable, Si
      * Needed to support Snippet Generator and Workflow properly.
      */
     public TestType[] getTools() {
-        return types;
+        return tools;
     }
 
     /*
@@ -98,10 +93,6 @@ public class XUnitPublisher extends Recorder implements DryRun, Serializable, Si
      */
     public String getTestTimeMargin() {
         return String.valueOf(getExtraConfiguration().getTestTimeMargin());
-    }
-
-    public TestType[] getTypes() {
-        return types;
     }
 
     public XUnitThreshold[] getThresholds() {
@@ -132,7 +123,7 @@ public class XUnitPublisher extends Recorder implements DryRun, Serializable, Si
     @Override
     public void perform(final Run<?, ?> build, FilePath workspace, Launcher launcher, final TaskListener listener)
             throws InterruptedException, IOException {
-        XUnitProcessor xUnitProcessor = new XUnitProcessor(getTypes(), getThresholds(), getThresholdMode(), getExtraConfiguration());
+        XUnitProcessor xUnitProcessor = new XUnitProcessor(getTools(), getThresholds(), getThresholdMode(), getExtraConfiguration());
         xUnitProcessor.performXUnit(false, build, workspace, listener);
     }
 
@@ -140,7 +131,7 @@ public class XUnitPublisher extends Recorder implements DryRun, Serializable, Si
     public boolean performDryRun(AbstractBuild<?, ?> build, Launcher launcher, BuildListener listener)
             throws InterruptedException, IOException {
         try {
-            XUnitProcessor xUnitProcessor = new XUnitProcessor(getTypes(), getThresholds(), getThresholdMode(), getExtraConfiguration());
+            XUnitProcessor xUnitProcessor = new XUnitProcessor(getTools(), getThresholds(), getThresholdMode(), getExtraConfiguration());
             xUnitProcessor.performXUnit(true, build, build.getWorkspace(), listener);
         } catch (Throwable t) {
             listener.getLogger().println("[ERROR] - There is an error: " + t.getCause().getMessage());
