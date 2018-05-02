@@ -47,7 +47,7 @@ public class QTestLibType extends TestType {
         super(pattern, skipNoTestFiles, failIfNotNew, deleteOutputFiles, stopProcessingIfError);
     }
 
-    @Symbol({ "qttest", "QtTest" })
+    @Symbol("QtTest")
     @Extension
     public static class QTestLibTypeDescriptor extends TestTypeDescriptor<QTestLibType> {
 

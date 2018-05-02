@@ -42,7 +42,7 @@ public class MSTestJunitHudsonTestType extends TestType {
         super(pattern, skipNoTestFiles, failIfNotNew, deleteOutputFiles, stopProcessingIfError);
     }
 
-    @Symbol({ "mstest", "MSTest" })
+    @Symbol("MSTest")
     @Extension
     public static class DescriptorImpl extends TestTypeDescriptor<MSTestJunitHudsonTestType> {
 

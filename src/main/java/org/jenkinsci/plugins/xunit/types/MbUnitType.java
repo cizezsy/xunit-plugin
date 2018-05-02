@@ -45,7 +45,7 @@ public class MbUnitType extends TestType {
         super(pattern, skipNoTestFiles, failIfNotNew, deleteOutputFiles, stopProcessingIfError);
     }
 
-    @Symbol({ "mbunit", "MbUnit" })
+    @Symbol("MbUnit")
     @Extension
     public static class MbUnitTypeDescriptor extends TestTypeDescriptor<MbUnitType> {
 

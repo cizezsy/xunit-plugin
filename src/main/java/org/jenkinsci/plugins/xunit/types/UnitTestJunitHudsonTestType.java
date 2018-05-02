@@ -38,7 +38,7 @@ public class UnitTestJunitHudsonTestType extends TestType {
         super(pattern, skipNoTestFiles, failIfNotNew, deleteOutputFiles, stopProcessingIfError);
     }
 
-    @Symbol({ "unittest", "UnitTest" })
+    @Symbol("UnitTest")
     @Extension
     public static class DescriptorImpl extends TestTypeDescriptor<UnitTestJunitHudsonTestType> {
 

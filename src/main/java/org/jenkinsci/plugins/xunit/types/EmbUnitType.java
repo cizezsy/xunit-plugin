@@ -48,7 +48,7 @@ public class EmbUnitType extends TestType {
         super(pattern, skipNoTestFiles, failIfNotNew, deleteOutputFiles, stopProcessingIfError);
     }
 
-    @Symbol({ "embunit", "embUnit" })
+    @Symbol("embUnit")
     @Extension
     public static class EmbUnitTypeDescriptor extends TestTypeDescriptor<EmbUnitType> {
 

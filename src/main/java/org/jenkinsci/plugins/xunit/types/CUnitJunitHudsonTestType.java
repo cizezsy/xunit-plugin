@@ -45,7 +45,7 @@ public class CUnitJunitHudsonTestType extends TestType {
         super(pattern, skipNoTestFiles, failIfNotNew, deleteOutputFiles, stopProcessingIfError);
     }
 
-    @Symbol({ "cunit", "CUnit" })
+    @Symbol("CUnit")
     @Extension
     public static class DescriptorImpl extends TestTypeDescriptor<CUnitJunitHudsonTestType> {
 

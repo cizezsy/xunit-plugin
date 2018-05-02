@@ -48,7 +48,7 @@ public class CustomType extends TestType {
         return customXSL;
     }
 
-    @Symbol({ "custom", "Custom" })
+    @Symbol("Custom")
     @Extension
     public static class CustomInputMetricDescriptor extends TestTypeDescriptor<CustomType> {
 

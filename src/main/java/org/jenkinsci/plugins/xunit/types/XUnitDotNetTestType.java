@@ -45,7 +45,7 @@ public class XUnitDotNetTestType extends TestType {
         super(pattern, skipNoTestFiles, failIfNotNew, deleteOutputFiles, stopProcessingIfError);
     }
 
-    @Symbol({"xunitdotnet", "xUnitDotNet"})
+    @Symbol("xUnitDotNet")
     @Extension
     public static class DescriptorImpl extends TestTypeDescriptor<XUnitDotNetTestType> {
 

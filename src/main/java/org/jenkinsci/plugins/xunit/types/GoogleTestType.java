@@ -44,7 +44,7 @@ public class GoogleTestType extends TestType {
         super(pattern, skipNoTestFiles, failIfNotNew, deleteOutputFiles, stopProcessingIfError);
     }
 
-    @Symbol({ "googletest", "GoogleTest" })
+    @Symbol("GoogleTest")
     @Extension
     public static class GoogleTestTypeDescriptor extends TestTypeDescriptor<GoogleTestType> {
 

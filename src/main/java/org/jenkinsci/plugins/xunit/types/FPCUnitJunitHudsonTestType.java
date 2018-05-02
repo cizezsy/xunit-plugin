@@ -44,7 +44,7 @@ public class FPCUnitJunitHudsonTestType extends TestType {
         super(pattern, skipNoTestFiles, failIfNotNew, deleteOutputFiles, stopProcessingIfError);
     }
 
-    @Symbol({ "fpcunit", "FPCUnit" })
+    @Symbol("FPCUnit")
     @Extension
     public static class DescriptorImpl extends TestTypeDescriptor<FPCUnitJunitHudsonTestType> {
 

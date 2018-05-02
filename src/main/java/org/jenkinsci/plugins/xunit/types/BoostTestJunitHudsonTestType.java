@@ -43,7 +43,7 @@ public class BoostTestJunitHudsonTestType extends TestType {
         super(pattern, skipNoTestFiles, failIfNotNew, deleteOutputFiles, stopProcessingIfError);
     }
 
-    @Symbol({ "boosttest", "BoostTest" })
+    @Symbol("BoostTest")
     @Extension
     public static class DescriptorImpl extends TestTypeDescriptor<BoostTestJunitHudsonTestType> {
 

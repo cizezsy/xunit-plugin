@@ -45,7 +45,7 @@ public class AUnitJunitHudsonTestType extends TestType {
         super(pattern, skipNoTestFiles, failIfNotNew, deleteOutputFiles, stopProcessingIfError);
     }
 
-    @Symbol({ "aunit", "AUnit" })
+    @Symbol("AUnit")
     @Extension
     public static class DescriptorImpl extends TestTypeDescriptor<AUnitJunitHudsonTestType> {
 

@@ -43,7 +43,7 @@ public class CppTestJunitHudsonTestType extends TestType {
         super(pattern, skipNoTestFiles, failIfNotNew, deleteOutputFiles, stopProcessingIfError);
     }
 
-    @Symbol({ "cpptest", "CppTest" })
+    @Symbol("CppTest")
     @Extension
     public static class DescriptorImpl extends TestTypeDescriptor<CppTestJunitHudsonTestType> {
 

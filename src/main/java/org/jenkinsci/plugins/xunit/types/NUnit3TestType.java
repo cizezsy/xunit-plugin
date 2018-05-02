@@ -38,7 +38,7 @@ public class NUnit3TestType extends TestType {
         super(pattern, skipNoTestFiles, failIfNotNew, deleteOutputFiles, stopProcessingIfError);
     }
 
-    @Symbol({ "nunit3", "NUnit3" })
+    @Symbol("NUnit3")
     @Extension
     public static class DescriptorImpl extends TestTypeDescriptor<NUnit3TestType> {
 

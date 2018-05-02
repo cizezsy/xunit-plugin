@@ -45,7 +45,7 @@ public class JUnitType extends TestType {
         super(pattern, skipNoTestFiles, failIfNotNew, deleteOutputFiles, stopProcessingIfError);
     }
 
-    @Symbol({ "junit", "JUnit" })
+    @Symbol("JUnit")
     @Extension
     public static class JUnitTypeDescriptor extends TestTypeDescriptor<JUnitType> {
 

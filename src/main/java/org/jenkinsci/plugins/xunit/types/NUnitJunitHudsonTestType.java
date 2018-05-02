@@ -42,7 +42,7 @@ public class NUnitJunitHudsonTestType extends TestType {
         super(pattern, skipNoTestFiles, failIfNotNew, deleteOutputFiles, stopProcessingIfError);
     }
 
-    @Symbol({ "nunit2", "NUnit2" })
+    @Symbol("NUnit2")
     @Extension
     public static class DescriptorImpl extends TestTypeDescriptor<NUnitJunitHudsonTestType> {
 

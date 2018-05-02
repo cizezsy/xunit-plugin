@@ -47,7 +47,7 @@ public class CTestType extends TestType {
         super(pattern, skipNoTestFiles, failIfNotNew, deleteOutputFiles, stopProcessingIfError);
     }
 
-    @Symbol({ "ctest", "CTest" })
+    @Symbol("CTest")
     @Extension
     public static class CTestTypeDescriptor extends TestTypeDescriptor<CTestType> {
 

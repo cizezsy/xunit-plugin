@@ -44,7 +44,7 @@ public class ValgrindJunitHudsonTestType extends TestType {
         super(pattern, skipNoTestFiles, failIfNotNew, deleteOutputFiles, stopProcessingIfError);
     }
 
-    @Symbol({ "valgrind", "Valgrind" })
+    @Symbol("Valgrind")
     @Extension
     public static class DescriptorImpl extends TestTypeDescriptor<ValgrindJunitHudsonTestType> {
 

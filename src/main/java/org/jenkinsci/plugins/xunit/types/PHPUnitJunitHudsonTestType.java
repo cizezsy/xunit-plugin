@@ -43,7 +43,7 @@ public class PHPUnitJunitHudsonTestType extends TestType {
         super(pattern, skipNoTestFiles, failIfNotNew, deleteOutputFiles, stopProcessingIfError);
     }
 
-    @Symbol({ "phpunit", "PHPUnit"})
+    @Symbol("PHPUnit")
     @Extension
     public static class DescriptorImpl extends TestTypeDescriptor<PHPUnitJunitHudsonTestType> {
 

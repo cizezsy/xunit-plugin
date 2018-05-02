@@ -67,4 +67,19 @@ public class XUnitWorkflowTest {
 
         jenkinsRule.assertBuildStatus(Result.UNSTABLE, job.scheduleBuild2(0).get());
     }
+
+    @Test
+    public void xunit() throws Exception {
+        WorkflowJob job = getBaseJob("publisher2");
+        job.setDefinition(new CpsFlowDefinition(""
+                + "node {\n"
+                + "  publishXUnit(testTimeMargin: '3000',"
+                + "               thresholdMode: 1,"
+                + "               thresholds: [failed(failureNewThreshold: '', failureThreshold: '', unstableNewThreshold: '', unstableThreshold: '1')]"
+                + "               tools: [GoogleTest(deleteOutputFiles: false, failIfNotNew: false, pattern: 'input.xml', skipNoTestFiles: false, stopProcessingIfError: true)],"
+                + "  )\n"
+                + "}", true));
+        
+        jenkinsRule.assertBuildStatus(Result.UNSTABLE, job.scheduleBuild2(0).get());
+    }
 }
