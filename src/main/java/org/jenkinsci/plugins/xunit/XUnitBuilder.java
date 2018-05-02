@@ -27,7 +27,6 @@ package org.jenkinsci.plugins.xunit;
 import java.io.IOException;
 import java.util.Arrays;
 
-import org.jenkinsci.Symbol;
 import org.jenkinsci.lib.dtkit.descriptor.TestTypeDescriptor;
 import org.jenkinsci.lib.dtkit.type.TestType;
 import org.jenkinsci.plugins.xunit.threshold.FailedThreshold;
@@ -53,7 +52,9 @@ import jenkins.tasks.SimpleBuildStep;
 
 /**
  * @author Gregory Boissinot
+ * @deprecated Use {@link XUnitPublisher} instead of this.
  */
+@Deprecated
 public class XUnitBuilder extends Builder implements SimpleBuildStep {
 
     private TestType[] types;
@@ -136,7 +137,6 @@ public class XUnitBuilder extends Builder implements SimpleBuildStep {
         return BuildStepMonitor.NONE;
     }
 
-    @Symbol("xunit")
     @Extension
     public static final class XUnitDescriptorBuilder extends BuildStepDescriptor<Builder> {
 

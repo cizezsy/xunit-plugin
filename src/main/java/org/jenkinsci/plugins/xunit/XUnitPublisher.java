@@ -150,13 +150,12 @@ public class XUnitPublisher extends Recorder implements DryRun, Serializable, Si
         return true;
     }
 
-
     @Override
     public BuildStepMonitor getRequiredMonitorService() {
         return BuildStepMonitor.NONE;
     }
 
-    @Symbol("publishXUnit")
+    @Symbol("xunit")
     @Extension
     public static final class XUnitDescriptorPublisher extends BuildStepDescriptor<Publisher> {
 

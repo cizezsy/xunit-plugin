@@ -70,13 +70,13 @@ public class XUnitWorkflowTest {
 
     @Test
     public void xunit() throws Exception {
-        WorkflowJob job = getBaseJob("publisher2");
+        WorkflowJob job = getBaseJob("readablePublisherPipeline");
         job.setDefinition(new CpsFlowDefinition(""
                 + "node {\n"
-                + "  publishXUnit(testTimeMargin: '3000',"
-                + "               thresholdMode: 1,"
-                + "               thresholds: [failed(failureNewThreshold: '', failureThreshold: '', unstableNewThreshold: '', unstableThreshold: '1')]"
-                + "               tools: [GoogleTest(deleteOutputFiles: false, failIfNotNew: false, pattern: 'input.xml', skipNoTestFiles: false, stopProcessingIfError: true)],"
+                + "  xunit(testTimeMargin: '3000',"
+                + "        thresholdMode: 1,"
+                + "        thresholds: [ failed(failureNewThreshold: '', failureThreshold: '', unstableNewThreshold: '', unstableThreshold: '1') ],"
+                + "        tools: [ GoogleTest(deleteOutputFiles: false, failIfNotNew: false, pattern: 'input.xml', skipNoTestFiles: false, stopProcessingIfError: true) ]"
                 + "  )\n"
                 + "}", true));
         
